@@ -1,0 +1,158 @@
+#include <iostream>
+#include <string>
+
+void print_combinations(int n);
+void combinations_helper(std::string& s, int n, int i);
+
+int main(void){
+    std:;cout << "Enter size ";
+    int n;
+    std::cin >>n;
+    print_combinations(n);
+
+    return 0;
+}
+
+void print_combinations(int n){
+    std::string s(n, 'a');
+    //call the helper function
+    combinations_helper(s, n, 0);
+
+}
+
+void combinations_helper(std::string& s, int n, int i){
+    //Base case
+    if(i>=n){
+        std::cout << s << std::endl;
+        return;
+    }
+    while (s[i] <= 'z'){
+        //recursive call for the next character
+        combinations_helper(s, n, i+1);
+        s[i]++;
+    }
+    //if letter reaches z, set it to a
+    s[i]= 'a'
+}
+
+//Frm 13
+#include <iostream>
+#include <string>
+
+//Create a structure description
+typedef struct(
+    std::string title;
+    int duration;
+
+) Lecture;
+
+
+int main(void){
+    //Create a lecture object
+    Lecture oop_Lecture;
+
+    //Set the properties
+    oop_Lecture.title = "Classes and Objects";
+    oop_Lecture.duration = 10000;
+
+    std::cout << "Title: " << oop_Lecture.title << std::endl;
+    std::cout << "Duration: " << oop_Lecture.duration << std::endl;
+
+
+    return 0;
+}
+
+//from 14
+#include <iostream>
+#include <string>
+#include <c
+
+//Create a Route structure (source, destination)
+
+typedef struct{
+    //Access specifiers (public, private)
+private:
+    std::string source;
+    std::string destination;
+    int length;
+
+    //Private method
+    void updateLength() {
+        length = (source.empty() || destination.empty()) ? 0: rand() % 900 +75;
+    }
+
+public:
+    //Constructors are called when the object is created
+    //Constructors should be public
+    //Constructors have no return type (not even void)
+    //Constructors have the same name as the class
+    //Create a no argument constructor
+    //Route() {
+        //length = 0;
+    //}
+
+    //No argument constructor (different syntax)
+    Route() : source("-"), destination("-"), length(0) {
+
+    }
+
+    //Constructor with arguments
+    Route(const std::string& s, const std::string& d) {
+        setSource(s);
+        setDestination(d);
+    }
+
+    //Define a method
+    void print() {
+        std::cout << source << " -> " << destination 
+            << ": " << length << std::endl;
+    }
+    //Getters (get functions, accessor functions)
+    std::string getSource() {
+        return source;
+    }
+
+    std::string getDestination() {
+        return destination;
+    }
+
+    int getLength() {
+        return length;
+    }
+
+    //Set methods (setters, mutator functions)
+    void setSource(const std::string& new_source){
+        source = new_source;
+        //Call private method
+        updateLength();
+    }
+
+    void setDestination(const std::string& new_destination){
+        destination = new_destination;
+        updateLength();
+    }
+} Route;
+
+int main(void){
+    srand(time(0)); //Set the seed of random numbers
+    Route spring_break_trip;
+    spring_break_trip.print();
+
+
+    spring_break_trip.setSource("Lakeland");
+    spring_break_trip.setDestination("Orlando");
+    
+
+    //Change the destination
+    spring_break_trip.setDestination("New York");
+
+
+    //Call the method of an object
+    spring_break_trip print();
+
+    //Create second Route object
+    Route summer_trip("Lakeland", "Tokyo");
+    summer_trip.print();
+
+    return 0;
+}
